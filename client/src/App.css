@@ -1,0 +1,14 @@
+.nav__logo{
+  font-size: 35px;
+  font-weight: 600;
+  width: 30%;
+  margin-left: 100px;
+  color:white;
+}
+.nav__logo span{
+  color: #77B823;
+  font-size: 50px;
+}
+.container__messages{
+  height: 60vh;
+}
