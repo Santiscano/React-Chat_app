@@ -4,9 +4,13 @@ import {Server as SocketServer} from 'socket.io';
 import http from 'http';
 import cors from 'cors';
 import {PORT} from './config.js'
+import {join, dirname} from 'path';
+import {fileURLToPath} from 'url';
 
 // con express creamos la app
 const app = express();
+// traigo ubicacion actual
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // con http creamos un servidor en el que pondremos la app
 const server = http.createServer(app)
 // y ponemos el servidor dentro del servidor de  socket.io y esto lo guardamos dentro de la variable io
@@ -36,6 +40,8 @@ io.on('connection', (socket)=>{
         })
     })
 })
+// asi es el server el que entrega a react
+app.use(express.static(join(__dirname, '../client/dist')))
 
 // cambio app.listen por server.liste ya que app se puso arriba dentro del server http
 server.listen(PORT, ()=> console.log(`escuchando en el puerto ${PORT}`));
