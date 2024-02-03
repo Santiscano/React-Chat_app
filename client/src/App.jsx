@@ -51,6 +51,19 @@ function App() {
   };
   useEffect(scrollToBottom, [messages]);
 
+  // formatear fecha
+  const [date, setDate] = useState('');
+  const handleDate = () => {
+    const date = new Date();
+    const d = date.getDate();
+    const m = date.getMonth() + 1;
+    const y = date.getFullYear();
+    const today = `${d}/${m}/${y}`;
+    setDate(today);
+    console.log('today: ', today);
+  }
+
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* header */}
@@ -422,6 +435,7 @@ function App() {
               </div>
             </div>
 
+
             {/* Divider */}
             <div className="my-8 relative">
               <p className="text-gray-600 text-sm text-center bg-[#1E1F24] py-1 px-4 absolute -top-[14px] ml-[50%] -translate-x-[50%]">
@@ -429,6 +443,7 @@ function App() {
               </p>
               <hr className="border-gray-600" />
             </div>
+
 
             {/* chat online */}
             {messages.map((message, index) =>(
@@ -465,8 +480,6 @@ function App() {
             <div ref={messagesEndRef}></div>
           </div>
         </section>
-        
-
 
 
         {/* seccion 3 */}
@@ -543,17 +556,7 @@ function App() {
             </a>
           </div>
         </section>
-
       </main>
-
-
-
-
-
-
-      
-
-      
     </div>
   )
 }
